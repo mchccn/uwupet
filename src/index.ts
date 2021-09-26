@@ -6,6 +6,7 @@ import { PATHS } from "./constants";
 import { exists } from "./filesystem/exists";
 import { config } from "./utils/config";
 import { delay } from "./utils/delay";
+import { load } from "./utils/loader";
 import { setup } from "./utils/setup";
 
 export default async function uwupet() {
@@ -21,19 +22,28 @@ export default async function uwupet() {
 
     const data = await config();
 
+    const commands = await load();
+
     console.clear();
 
-    const command = (
-        await new Enquirer<{ ["​"]: string }>().prompt({
-            type: "input",
-            message: "",
-            name: "​",
-            history: {
-                store: new Store({ path: join(PATHS.COMMAND_HISTORY, `${data.user.username}.json`) }),
-                autosave: true,
-            },
-        } as PromptOptions)
-    )["​"];
+    (async function repl(): Promise<void> {
+        const command = (
+            await new Enquirer<{ ["​"]: string }>().prompt({
+                type: "input",
+                message: "",
+                name: "​",
+                validate(string) {
+                    return [...commands.keys()].includes(string.split(/\s+/)[0].toLowerCase());
+                },
+                history: {
+                    store: new Store({ path: join(PATHS.COMMAND_HISTORY, `${data.user.username}.json`) }),
+                    autosave: true,
+                },
+            } as PromptOptions)
+        )["​"];
 
-    console.log(command);
+        console.log(command);
+
+        return repl();
+    })();
 }

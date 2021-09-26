@@ -8,7 +8,8 @@
     },
     "scripts": {
         "uwupet": "./dist/bin.js",
-        "delete": "rm -rf ~/.config/uwupet/"
+        "delete": "rm -rf ~/.config/uwupet/",
+        "delete:history": "rm -rf ~/.config/uwupet/history"
     },
     "dependencies": {
         "chalk": "^4.1.2",

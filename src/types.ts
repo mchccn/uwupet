@@ -18,3 +18,14 @@ export type ConfigData = {
         exp: number;
     };
 };
+
+export interface Command {
+    name: string;
+    aliases: string[];
+    category: string;
+    usage: string;
+    description: string;
+    details: string;
+    hidden: boolean;
+    callback(args: string): Promise<unknown> | unknown;
+}
