@@ -1,24 +1,26 @@
 {
-  "name": "uwupet",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "bin": {
-    "uwupet": "./dist/index.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "enquirer": "^2.3.6"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "devDependencies": {
-    "@types/node": "^16.10.1",
-    "typescript": "^4.4.3"
-  }
+    "name": "uwupet",
+    "version": "1.0.0",
+    "description": "Virtual pet in your own terminal uwu.",
+    "main": "./dist/index.js",
+    "bin": {
+        "uwupet": "./dist/bin.js"
+    },
+    "scripts": {
+        "uwupet": "./dist/bin.js",
+        "delete": "rm -rf ~/.config/uwupet/"
+    },
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "data-store": "^4.0.3",
+        "enquirer": "^2.3.6"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^16.10.1",
+        "@types/yargs": "^17.0.3",
+        "typescript": "^4.4.3"
+    }
 }
