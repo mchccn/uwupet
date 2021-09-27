@@ -27,5 +27,5 @@ export interface Command {
     description: string;
     details: string;
     hidden: boolean;
-    callback(args: string): Promise<unknown> | unknown;
+    callback(args: string[]): Promise<unknown> | unknown;
 }

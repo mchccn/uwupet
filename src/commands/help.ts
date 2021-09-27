@@ -3,9 +3,9 @@ import { load } from "../utils/loader";
 
 const command: Command = {
     name: "help",
-    aliases: ["h"],
-    usage: "",
-    category: "",
+    aliases: ["h", "?", "man", "manual"],
+    usage: "[command]",
+    category: "utility",
     description: "The ubiquitous help command.",
     details: "Get stuck? Use this command for a full reference!",
     hidden: false,

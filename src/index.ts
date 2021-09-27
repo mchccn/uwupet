@@ -16,6 +16,12 @@ export default async function uwupet() {
         console.log(chalk.dim(`Come back soon! (^ _ ^)/`));
     });
 
+    process.on("unhandledRejection", (error) => {
+        if (!error) return;
+
+        return console.error(error);
+    });
+
     console.log(chalk.yellow(`Reading data...`));
 
     await delay(Math.random() * 100 + 200);
@@ -27,13 +33,16 @@ export default async function uwupet() {
     console.clear();
 
     (async function repl(): Promise<void> {
-        const command = (
+        const input = (
             await new Enquirer<{ ["​"]: string }>().prompt({
                 type: "input",
                 message: "",
                 name: "​",
                 validate(string) {
-                    return [...commands.keys()].includes(string.split(/\s+/)[0].toLowerCase());
+                    return (
+                        [...commands.keys(), ...[...commands.entries()].flatMap(([, { aliases }]) => aliases)].includes(string.split(/\s+/)[0].toLowerCase()) ||
+                        string.length === 0
+                    );
                 },
                 history: {
                     store: new Store({ path: join(PATHS.COMMAND_HISTORY, `${data.user.username}.json`) }),
@@ -42,7 +51,11 @@ export default async function uwupet() {
             } as PromptOptions)
         )["​"];
 
-        console.log(command);
+        if (input.length) {
+            const [name, ...args] = input.split(/\s+/);
+            const command = (commands.get(name) ?? [...commands.entries()].find(([, { aliases }]) => aliases.includes(name))?.[1])!;
+            await command.callback(args);
+        }
 
         return repl();
     })();
