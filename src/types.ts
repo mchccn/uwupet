@@ -1,3 +1,5 @@
+import { CATEGORIES } from "./constants";
+
 export type JSONType =
     | string
     | number
@@ -22,10 +24,10 @@ export type ConfigData = {
 export interface Command {
     name: string;
     aliases: string[];
-    category: string;
+    category: typeof CATEGORIES[number];
     usage: string;
     description: string;
     details: string;
     hidden: boolean;
-    callback(args: string[]): Promise<unknown> | unknown;
+    callback(args: string[], ctx: { data: ConfigData }): Promise<unknown> | unknown;
 }
