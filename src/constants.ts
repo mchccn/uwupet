@@ -9,5 +9,6 @@ export const PATHS = {
     DATA_FILE: join(homedir(), ".config", "uwupet", "data.json"),
     BACKUPS: join(homedir(), ".config", "uwupet", "backups"),
     COMMAND_HISTORY: join(homedir(), ".config", "uwupet", "history"),
+    UPGRADES_JSON: join(__dirname, "..", "upgrades.json"),
     HOME: homedir(),
 } as const;

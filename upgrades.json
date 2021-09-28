@@ -1,0 +1,89 @@
+{
+    "forge": {
+        "copper": {
+            "name": "Copper forge",
+            "description": "Increases copper production and iron by a smaller amount.",
+            "cost": "100c",
+            "level": 0,
+            "requirement": 1
+        },
+        "iron": {
+            "name": "Iron forge",
+            "description": "Iron production is doubled.",
+            "cost": "125i",
+            "level": 0,
+            "requirement": 5
+        },
+        "gold": {
+            "name": "Golden forge",
+            "description": "Gold and iron production are increased slightly.",
+            "cost": "150g",
+            "level": 0,
+            "requirement": 12
+        },
+        "diamonds": {
+            "name": "Molten forge",
+            "description": "Diamond production increased.",
+            "cost": "175d",
+            "level": 0,
+            "requirement": 23
+        },
+        "emeralds": {
+            "name": "Godly forge",
+            "description": "All resource production is increased.",
+            "cost": "200e",
+            "level": 0,
+            "requirement": 40
+        }
+    },
+    "pet": {
+        "health": {
+            "booster": {
+                "name": "Health booster",
+                "description": "Increases your pet's base health.",
+                "cost": "100g",
+                "level": 0,
+                "requirement": 11
+            },
+            "regeneration": {
+                "name": "Faster healing",
+                "description": "Your pet heals faster.",
+                "cost": "100d",
+                "level": 0,
+                "requirement": 22
+            }
+        },
+        "energy": {
+            "stamina": {
+                "name": "5 hour energy",
+                "description": "Pet's max stamina is increased.",
+                "cost": "250i",
+                "level": 0,
+                "requirement": 7
+            },
+            "rejuvenation": {
+                "name": "Brain break",
+                "description": "Your pet recovers energy faster.",
+                "cost": "250g",
+                "level": 0,
+                "requirement": 15
+            }
+        },
+        "leveling": {
+            "experience": {
+                "name": "Big brain",
+                "description": "You and your pet gain experience faster.",
+                "cost": "150d",
+                "level": 0,
+                "requirement": 16
+            },
+            "rewards": {
+                "name": "Suck-up",
+                "description": "Rewards for leveling-up are increased.",
+                "cost": "150e",
+                "level": 0,
+                "requirement": 30
+            }
+        }
+    }
+}

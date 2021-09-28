@@ -4,6 +4,7 @@ import { mkdir, writeFile } from "fs/promises";
 import { userInfo } from "os";
 import { PATHS } from "../constants";
 import { exists } from "../filesystem/exists";
+import { ConfigData } from "../types";
 
 export async function setup(corrupted?: boolean) {
     if (!(await exists(PATHS.CONFIG))) await mkdir(PATHS.CONFIG);
@@ -35,12 +36,24 @@ export async function setup(corrupted?: boolean) {
         name: "name",
     });
 
-    const config = {
+    const upgrades = (await import(PATHS.UPGRADES_JSON)) as ConfigData["upgrades"];
+
+    const config: ConfigData = {
         user: {
             username,
+            copper: 0,
+            iron: 0,
+            gold: 0,
+            diamonds: 0,
+            emeralds: 0,
+            boosters: [],
+            inventory: [{ item: "food", rarity: "common" }],
         },
+        upgrades,
         pet: {
             name,
+            health: 1,
+            energy: 1,
             level: 0,
             exp: 0,
         },
