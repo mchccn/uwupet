@@ -1,27 +1,33 @@
 {
-    "name": "uwupet",
-    "version": "1.0.0",
-    "description": "Virtual pet in your own terminal uwu.",
-    "main": "./dist/index.js",
-    "bin": {
-        "uwupet": "./dist/bin.js"
-    },
-    "scripts": {
-        "uwupet": "./dist/bin.js",
-        "delete": "rm -rf ~/.config/uwupet/",
-        "delete:history": "rm -rf ~/.config/uwupet/history"
-    },
-    "dependencies": {
-        "chalk": "^4.1.2",
-        "common-tags": "^1.8.0",
-        "enquirer": "^2.3.6"
-    },
-    "keywords": [],
-    "author": "cursorsdottsx <cursors.dev@gmail.com>",
-    "license": "MIT",
-    "devDependencies": {
-        "@types/common-tags": "^1.8.1",
-        "@types/node": "^16.10.1",
-        "typescript": "^4.4.3"
-    }
+  "name": "uwupet",
+  "version": "1.0.0",
+  "description": "Virtual pet in your own terminal uwu.",
+  "main": "./dist/index.js",
+  "bin": {
+    "uwupet": "dist/bin.js"
+  },
+  "scripts": {
+    "uwupet": "./dist/bin.js",
+    "delete": "rm -rf ~/.config/uwupet/",
+    "delete:history": "rm -rf ~/.config/uwupet/history"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "enquirer": "^2.3.6"
+  },
+  "keywords": [],
+  "author": "cursorsdottsx <cursors.dev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.10.1",
+    "typescript": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cursorsdottsx/uwupet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cursorsdottsx/uwupet/issues"
+  },
+  "homepage": "https://github.com/cursorsdottsx/uwupet#readme"
 }
