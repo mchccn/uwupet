@@ -5,6 +5,7 @@ import { userInfo } from "os";
 import { PATHS } from "../constants";
 import { exists } from "../filesystem/exists";
 import { ConfigData } from "../types";
+import { delay } from "./delay";
 
 export async function setup(corrupted?: boolean) {
     if (!(await exists(PATHS.CONFIG))) await mkdir(PATHS.CONFIG);
@@ -61,7 +62,13 @@ export async function setup(corrupted?: boolean) {
 
     await mkdir(PATHS.DATA_DIRECTORY);
 
+    await mkdir(PATHS.BACKUPS);
+
     await writeFile(PATHS.DATA_FILE, JSON.stringify(config));
 
-    return console.log(chalk.green(`Hello ${username}! Welcome to uwupet${corrupted ? " again" : ""}, and make sure to take care of ${name}!`));
+    console.log(chalk.green(`Hello ${username}! Welcome to uwupet${corrupted ? " again" : ""}, and make sure to take care of ${name}!`));
+
+    await delay(2500);
+
+    return;
 }

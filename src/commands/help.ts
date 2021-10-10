@@ -43,10 +43,9 @@ ${chalk.dim.green(command.aliases.sort().join(", "))}
                             (command, index, array) =>
                                 `${array[index - 1]?.category !== command.category ? `${chalk.bold.green(command.category)}\n` : ""}${chalk.cyan(
                                     command.name
-                                )} ${chalk.dim.cyanBright(command.usage)}`
+                                )} ${chalk.dim.cyanBright(command.usage)}${array[index + 1]?.category !== command.category ? "\n" : ""}`
                         )
-                        .join("\n") +
-                    `\n`
+                        .join("\n")
             )
         );
     },

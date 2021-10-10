@@ -6,20 +6,24 @@ import { exists } from "./filesystem/exists";
 import { config } from "./utils/config";
 import { delay } from "./utils/delay";
 import { load } from "./utils/loader";
+import { pad } from "./utils/pad";
 import { setup } from "./utils/setup";
 
 export default async function uwupet() {
     if (!(await exists(join(PATHS.DATA_DIRECTORY)))) await setup();
 
-    process.on("exit", () => {
-        console.log(chalk.dim(`Come back soon! (^ _ ^)/`));
-    });
+    const exit = async () => console.log(chalk.dim(`Come back soon! (^ _ ^)/`));
 
-    process.on("unhandledRejection", (error) => {
-        if (!error) return;
+    process
+        .on("exit", exit)
+        .on("SIGINT", exit)
+        .on("SIGKILL", exit)
+        .on("SIGQUIT", exit)
+        .on("unhandledRejection", (error) => {
+            if (!error) return;
 
-        return console.error(error);
-    });
+            return console.error(error);
+        });
 
     console.log(chalk.yellow(`Reading data...`));
 
@@ -30,6 +34,12 @@ export default async function uwupet() {
     const commands = await load();
 
     console.clear();
+
+    console.log(
+        pad(`\
+${chalk.green(`Welcome back, ${data.user.username}!`)}
+`)
+    );
 
     (async function repl(): Promise<void> {
         const input = (
